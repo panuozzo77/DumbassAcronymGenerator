@@ -4,6 +4,14 @@ import random
 import configparser
 from pathlib import Path
 
+# Global verbosity toggle
+verbose = False
+
+# Helper function for logging
+def log(message):
+    if verbose:
+        print(message)
+
 # Determine the absolute path to the directory containing the script
 def load_config():
     script_dir = Path(__file__).resolve().parent
@@ -27,12 +35,15 @@ def extract_words_from_random_page(pdf_path):
     doc = fitz.open(pdf_path)
     num_pages = doc.page_count
     random_page_number = random.randint(0, num_pages - 1)
+    log(f"extracting from pdf:{os.path.basename(pdf_path)} at page {random_page_number}")
     page = doc.load_page(random_page_number)
     text = page.get_text()
     return text
 
+
 # Define words_found as a global variable
 words_found = set()
+
 
 def find_random_words_by_initial(letter, directory, num_words):
     global words_found  # Declare words_found as a global variable
@@ -48,19 +59,19 @@ def find_random_words_by_initial(letter, directory, num_words):
                 text = extract_words_from_random_page(pdf_path)
                 words = text.split()
                 # Filter words that start with the specified letter and are longer than or equal to 4 characters
-                words_filtered = [word for word in words if word.lower().startswith(letter) and len(word) >= 4 and word.isalpha()]
+                words_filtered = [word for word in words if
+                                  word.lower().startswith(letter) and len(word) >= 4 and word.isalpha()]
 
                 if words_filtered:
-                    # Pick a random number of words from this list
-                    while len(words_found) < num_words:
+                    # Pick just 1 word then find others refreshing the pages from the PDF
                         random_index = random.randint(0, len(words_filtered) - 1)
                         random_word = words_filtered[random_index]
 
                         words_found.add(random_word)
+                        log(f"added: '{random_word}' ({len(words_found)}/{num_words})")
                 else:
                     attempts += 1
-                    # Uncomment the following line if you want to print a message when no words are found
-                    print("No words found for " + letter, "remaining attempts: " + str(max_attempts - attempts))
+                    log("No words found for {letter.capitalize()} remaining attempts: {str(max_attempts - attempts)}")
 
     # Convert the set to a list before returning
     words_found_list = list(words_found)
@@ -68,4 +79,3 @@ def find_random_words_by_initial(letter, directory, num_words):
     words_found.clear()
 
     return words_found_list
-

@@ -7,9 +7,6 @@ __pycache__
 # Ignore any compiled Python files
 *.pyc
 
-# Ignore PDF files if you don't want to include them in the repository
-pdfs/
-
 .idea
 # Ignore any other files you don't want to include in the repository
 # For example, temporary files, logs, etc.

@@ -1,7 +1,13 @@
 import functools
-
 import utils as util
 
+# Global verbosity toggle
+verbose = False
+
+# Helper function for logging
+def log(message):
+    if verbose:
+        print(message)
 
 def validate_letter(func):
     @functools.wraps(func)
@@ -20,9 +26,9 @@ def validate_letter(func):
 class WordGenerator:
     def __init__(self):
         self.num_words, self.path = util.load_config()
-        print("Initializing WordGenerator from config.ini")
-        print("Number of words for letter: {}".format(self.num_words))
-        print("Path for scanning PDFs: {}".format(self.path))
+        log("Initializing WordGenerator from config.ini")
+        log("Number of words for letter: {}".format(self.num_words))
+        log("Path for scanning PDFs: {}".format(self.path))
 
     def get_max_words(self):
         return self.num_words
@@ -31,8 +37,8 @@ class WordGenerator:
     def find_words_starting_with(self, letter):
         word_list = util.find_random_words_by_initial(letter, self.path, self.num_words)
 
-        print("Words found starting with", letter.capitalize(), ":")
-        print(word_list)
+        log("Words found starting with {letter.capitalize()}:")
+        log(word_list)
 
         return word_list
 

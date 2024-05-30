@@ -6,7 +6,7 @@ class AcronymMaker:
         self.word_generator = generator
 
     def make_acronym(self):
-        word = input("Enter a word to make an acronym: ").lower()
+        word = input("Enter a word to make an acronym with: ").lower()
 
         acronym = []
         for letter in word:
@@ -14,7 +14,7 @@ class AcronymMaker:
             words_found = self.word_generator.find_words_starting_with(letter)
             while not valid_word:
                 if words_found:
-                    print(f"Words found starting with '{letter}':")
+                    print(f"Words found starting with '{letter.capitalize()}':")
                     for i, word in enumerate(words_found, 1):
                         print(f"{i}. {word}")
                     choice = input(f"Choose a word for letter '{letter.capitalize()}': ")
@@ -26,7 +26,7 @@ class AcronymMaker:
                     else:
                         print("Invalid choice. Please choose a valid number.")
                 else:
-                    print(f"No words found starting with '{letter}'. Please choose another letter.")
+                    print(f"No words found starting with '{letter.capitalize()}'. Please choose another letter.")
                     break
 
         if acronym:
