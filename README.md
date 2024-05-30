@@ -1,7 +1,12 @@
-# dumbassAcronym
+# DumbassAcronymGenerator
 
 ## Description
 The "dumbassAcronym" program is a Python application designed to generate acronyms based on user input words. It utilizes PDF documents to extract random words that match the initials of the input word, allowing users to interactively choose the best words to obtain creative acronyms.
+
+## Project Focus
+The primary objective of this project is to develop a software solution that operates seamlessly across languages utilizing the Latin alphabet. By leveraging the common characteristics of Latin-based languages, the "dumbassAcronym" program aims to provide a universal tool for generating acronyms that transcends linguistic barriers.
+
+
 
 ## Project Structure
 - `pdfs/`: Directory containing PDF documents from which random words are extracted.
