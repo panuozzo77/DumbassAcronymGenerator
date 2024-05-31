@@ -30,7 +30,7 @@ class AcronymMaker:
                     break
 
         if acronym:
-            print("Acronym:", ''.join(acronym).upper())
+            print(f"This acronym stands for:", ''.join(acronym).upper())
         else:
             print("No words found to create an acronym.")
 
