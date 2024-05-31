@@ -27,7 +27,7 @@ class WordGenerator:
     def __init__(self):
         self.num_words, self.path = util.load_config()
         log("Initializing WordGenerator from config.ini")
-        log("Number of words for letter: {}".format(self.num_words))
+        log("Number of words for letter to search: {}".format(self.num_words))
         log("Path for scanning PDFs: {}".format(self.path))
 
     def get_max_words(self):
