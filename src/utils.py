@@ -27,9 +27,23 @@ def load_config():
     # Read the configuration file
     config.read(config_path)
 
-    # Now you can access the values in the config.ini file
+    # Access the values in the config.ini file
     num_words_to_search = config.getint('numbers', 'num_words_to_search')
-    directory_path = config.get('paths', 'directory_path')
+
+    # Get directory path and check if it's provided
+    directory_path = config.get('paths', 'directory_path', fallback=None)
+
+    project_root = script_dir.parent
+
+    if not directory_path:
+        # Default to the 'pdfs' folder in the project root if no directory_path is provided
+        directory_path = project_root / 'pdfs'
+    else:
+        # Use the specified directory_path, relative to the project root if it's not an absolute path
+        directory_path = Path(directory_path)
+        if not directory_path.is_absolute():
+            directory_path = project_root / directory_path
+
     return num_words_to_search, directory_path
 
 
