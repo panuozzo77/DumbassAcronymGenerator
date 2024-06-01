@@ -7,10 +7,12 @@ from pathlib import Path
 # Global verbosity toggle
 verbose = False
 
+
 # Helper function for logging
 def log(message):
     if verbose:
         print(message)
+
 
 # Determine the absolute path to the directory containing the script
 def load_config():
@@ -45,6 +47,21 @@ def extract_words_from_random_page(pdf_path):
 words_found = set()
 
 
+def filter_words_by_initial_and_length(words, letter, min_length=4):
+    return [word for word in words if word.lower().startswith(letter) and len(word) >= min_length and word.isalpha()]
+
+
+def extract_random_word(words_filtered):
+    random_index = random.randint(0, len(words_filtered) - 1)
+    return words_filtered[random_index]
+
+
+def process_pdf_file(pdf_path, letter):
+    text = extract_words_from_random_page(pdf_path)
+    words = text.split()
+    return filter_words_by_initial_and_length(words, letter)
+
+
 def find_random_words_by_initial(letter, directory, num_words):
     global words_found  # Declare words_found as a global variable
 
@@ -56,26 +73,17 @@ def find_random_words_by_initial(letter, directory, num_words):
         for filename in os.listdir(directory):
             if filename.endswith(".pdf"):
                 pdf_path = os.path.join(directory, filename)
-                text = extract_words_from_random_page(pdf_path)
-                words = text.split()
-                # Filter words that start with the specified letter and are longer than or equal to 4 characters
-                words_filtered = [word for word in words if
-                                  word.lower().startswith(letter) and len(word) >= 4 and word.isalpha()]
+                words_filtered = process_pdf_file(pdf_path, letter)
 
                 if words_filtered:
-                    # Pick just 1 word then find others refreshing the pages from the PDF
-                        random_index = random.randint(0, len(words_filtered) - 1)
-                        random_word = words_filtered[random_index]
-
-                        words_found.add(random_word)
-                        log(f"added: '{random_word}' ({len(words_found)}/{num_words})")
+                    random_word = extract_random_word(words_filtered)
+                    words_found.add(random_word)
+                    log(f"added: '{random_word}' ({len(words_found)}/{num_words})")
                 else:
                     attempts += 1
-                    log("No words found for {letter.capitalize()} remaining attempts: {str(max_attempts - attempts)}")
+                    log(f"No words found for {letter.capitalize()} remaining attempts: {str(max_attempts - attempts)}")
 
-    # Convert the set to a list before returning
     words_found_list = list(words_found)
-    # Clear words_found for the next iteration
     words_found.clear()
 
     return words_found_list
