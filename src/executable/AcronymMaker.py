@@ -1,11 +1,36 @@
+"""
+AcronymMaker.py
+
+Python script for generating acronyms based on user input words.
+
+Author: Cristian Porzio
+License: MIT
+"""
+
 from src.executable.WordGenerator import WordGenerator
 
 
 class AcronymMaker:
+    """
+    Class for generating acronyms based on user input words.
+    """
+
     def __init__(self, generator):
+        """
+        Initialize AcronymMaker with a WordGenerator instance.
+
+        Args:
+            generator (WordGenerator): WordGenerator instance to find words starting with given letters.
+        """
         self.word_generator = generator
 
     def make_acronym(self):
+        """
+        Create an acronym based on user input words.
+
+        Prompts the user to input a word, finds words starting with each letter of the word,
+        and constructs an acronym from the chosen words.
+        """
         word = input("Enter a word to make an acronym with: ").lower()
 
         acronym = []

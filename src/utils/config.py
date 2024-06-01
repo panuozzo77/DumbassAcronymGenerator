@@ -1,9 +1,26 @@
+"""
+config.py
+
+Utility script for loading configuration parameters from config.ini file.
+
+Author: Cristian Porzio
+License: MIT
+"""
+
 import configparser
 from pathlib import Path
 from src.utils.logger import log
 
+
 # Determine the absolute path to the directory containing the script
 def load():
+    """
+    Load configuration parameters from config.ini file.
+
+    Returns:
+        num_words_to_search (int): Number of words to search for.
+        directory_path (Path): Path to the directory containing PDF documents.
+    """
     script_dir = Path(__file__).resolve().parent
 
     # Navigate up one level from src to the project root
