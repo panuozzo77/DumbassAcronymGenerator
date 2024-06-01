@@ -7,14 +7,20 @@ The "dumbassAcronym" program is a Python application designed to generate acrony
 The primary objective of this project is to develop a software solution that operates seamlessly across languages utilizing the Latin alphabet. By leveraging the common characteristics of Latin-based languages, the "dumbassAcronym" program aims to provide a universal tool for generating acronyms that transcends linguistic barriers.
 
 
-
 ## Project Structure
 - `pdfs/`: Directory containing PDF documents from which random words are extracted.
+- `README.md`: Markdown file containing information about the project.
+- `requirements.txt`: Text file listing the Python dependencies required by the project.
 - `src/`: Directory containing the source code of the program.
-  - `AcronymMaker.py`: Python script for generating acronyms based on user input.
-  - `WordGenerator.py`: Python script for extracting random words from PDF documents.
-  - `utils.py`: Utility functions used by the program.
-  - `config.ini`: Configuration file specifying parameters like the number of words to search and the directory path for PDFs.
+  - `executable/`: Directory containing executable Python scripts.
+    - `AcronymMaker.py`: Python script for generating acronyms based on user input.
+    - `WordGenerator.py`: Python script for extracting random words from PDF documents.
+  - `GrammarChecker.py`: Python script for checking grammar.
+  - `utils/`: Directory containing utility scripts and configuration files.
+    - `config.ini`: Configuration file specifying parameters like the number of words to search and the directory path for PDFs.
+    - `config.py`: Python script for loading configuration from `config.ini`.
+    - `extractor.py`: Python script for extracting words from PDF documents.
+    - `logger.py`: Python script for logging messages.
 
 ## Usage
 1. Run `AcronymMaker.py` to initiate the program.
