@@ -1,4 +1,4 @@
-from WordGenerator import WordGenerator
+from src.executable.WordGenerator import WordGenerator
 
 
 class AcronymMaker:

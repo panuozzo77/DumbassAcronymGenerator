@@ -1,51 +1,7 @@
 import os
 import fitz  # PyMuPDF
 import random
-import configparser
-from pathlib import Path
-
-# Global verbosity toggle
-verbose = False
-
-
-# Helper function for logging
-def log(message):
-    if verbose:
-        print(message)
-
-
-# Determine the absolute path to the directory containing the script
-def load_config():
-    script_dir = Path(__file__).resolve().parent
-
-    # Construct the path to the config.ini file
-    config_path = script_dir / "config.ini"
-
-    # Initialize the ConfigParser object
-    config = configparser.ConfigParser()
-
-    # Read the configuration file
-    config.read(config_path)
-
-    # Access the values in the config.ini file
-    num_words_to_search = config.getint('numbers', 'num_words_to_search')
-
-    # Get directory path and check if it's provided
-    directory_path = config.get('paths', 'directory_path', fallback=None)
-
-    project_root = script_dir.parent
-
-    if not directory_path:
-        # Default to the 'pdfs' folder in the project root if no directory_path is provided
-        directory_path = project_root / 'pdfs'
-    else:
-        # Use the specified directory_path, relative to the project root if it's not an absolute path
-        directory_path = Path(directory_path)
-        if not directory_path.is_absolute():
-            directory_path = project_root / directory_path
-
-    return num_words_to_search, directory_path
-
+from src.utils.logger import log as log
 
 def extract_words_from_random_page(pdf_path):
     doc = fitz.open(pdf_path)
