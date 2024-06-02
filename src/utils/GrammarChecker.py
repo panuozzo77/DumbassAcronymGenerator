@@ -41,5 +41,6 @@ if __name__ == "__main__":
     #parser.add_argument('parola', type=str, help='La parola da analizzare')
     #args = parser.parse_args()
     gc = GrammarChecker()
-    gc.analyze("mai")
+    type, genre, number = gc.analyze("correre")
+    print(type=="VERB")
 
