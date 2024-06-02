@@ -1,19 +1,47 @@
+"""
+GrammarChecker.py
+
+Python script for analyzing the grammatical structure of Italian words using spaCy.
+
+Author: Cristian Porzio
+License: MIT
+"""
+
 import spacy
 
 # python -m spacy download it_core_news_sm
 
-# Load the italian model
+# Load the Italian model
 nlp = spacy.load("it_core_news_sm")
 
 # Global verbosity toggle
 verbose = True
 
 def log(message):
+    """
+    Log a message if verbosity is enabled.
+
+    Args:
+        message (str): The message to log.
+    """
     if verbose:
         print(message)
 
 class GrammarChecker:
+    """
+    Class for analyzing the grammatical structure of Italian words.
+    """
+
     def analyze(self, word):
+        """
+        Analyze the grammatical structure of a given word.
+
+        Args:
+            word (str): The word to analyze.
+
+        Returns:
+            tuple: A tuple containing the type, genre, and number of the word.
+        """
         doc = nlp(word)
         for token in doc:
             morph = token.morph.to_dict()
@@ -24,7 +52,6 @@ class GrammarChecker:
             log(f"Parola: {token.text}")
             log(f"Tipo: {type}")
             if type == 'VERB':
-
                 modo = morph.get('VerbForm', 'N/A')
                 tempo = morph.get('Tense', 'N/A')
                 persona = morph.get('Person', 'N/A')
@@ -37,10 +64,7 @@ class GrammarChecker:
             return type, genre, number
 
 if __name__ == "__main__":
-    #parser = argparse.ArgumentParser(description='Analizzatore morfologico per parole italiane.')
-    #parser.add_argument('parola', type=str, help='La parola da analizzare')
-    #args = parser.parse_args()
+    # Example usage
     gc = GrammarChecker()
     type, genre, number = gc.analyze("correre")
-    print(type=="VERB")
-
+    print(type == "VERB")

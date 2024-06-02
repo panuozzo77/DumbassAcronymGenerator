@@ -1,3 +1,12 @@
+"""
+extractor.py
+
+Python script for extracting coherent words from PDF documents and finding random words starting with a given letter.
+
+Author: Cristian Porzio
+License: MIT
+"""
+
 import os
 from src.utils.GrammarChecker import GrammarChecker
 from src.utils.extractor import process_pdf_file
@@ -5,27 +14,41 @@ from src.utils.logger import log as log
 
 
 def extract_coherent_words(words_filtered, previous_word):
+    """
+    Filter the words to find coherent ones based on the previous word's grammatical structure.
+
+    Args:
+        words_filtered (list): List of words filtered by initial letter.
+        previous_word (str): The previous word chosen to base the filtering on.
+
+    Returns:
+        str: A coherent word based on grammatical analysis.
+    """
     checker = GrammarChecker()
     type, genre, number = checker.analyze(previous_word)
-    if (type is not "VERB"):
-        '''TODO words must be filtered matching the genre and number'''
+    if type != "VERB":
+        # TODO: Filter words matching the genre and number
+        pass
     else:
-        '''TODO words should not be verbs'''
+        # TODO: Filter out verbs
+        pass
+    # This is a placeholder, you will need to implement the actual logic
+    return words_filtered[0] if words_filtered else None
 
 
 def find_words(letter, directory, num_words, previous_word=None):
     """
-   Find random words starting with a given letter from PDF documents in a directory.
+    Find random words starting with a given letter from PDF documents in a directory.
 
-   Args:
-       letter (str): Initial letter to filter words by.
-       directory (str): Path to the directory containing PDF documents.
-       num_words (int): Number of words to find.
-       previous_word (str): previous chosen word to filter words by.
+    Args:
+        letter (str): Initial letter to filter words by.
+        directory (str): Path to the directory containing PDF documents.
+        num_words (int): Number of words to find.
+        previous_word (str): Previous chosen word to filter words by.
 
-   Returns:
-       list: List of random words starting with the given letter.
-   """
+    Returns:
+        list: List of random words starting with the given letter.
+    """
     global words_found  # Declare words_found as a global variable
 
     attempts = 0
@@ -40,8 +63,9 @@ def find_words(letter, directory, num_words, previous_word=None):
 
                 if words_filtered:
                     random_word = extract_coherent_words(words_filtered, previous_word)
-                    words_found.add(random_word)
-                    log(f"added: '{random_word}' ({len(words_found)}/{num_words})")
+                    if random_word:
+                        words_found.add(random_word)
+                        log(f"added: '{random_word}' ({len(words_found)}/{num_words})")
                 else:
                     attempts += 1
                     log(f"No words found for {letter.capitalize()} remaining attempts: {str(max_attempts - attempts)}")
