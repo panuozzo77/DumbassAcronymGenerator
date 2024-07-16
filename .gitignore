@@ -11,4 +11,4 @@ __pycache__
 # Ignore any other files you don't want to include in the repository
 # For example, temporary files, logs, etc.
 
-utils/config.ini
+src/utils/config.ini
