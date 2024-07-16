@@ -13,6 +13,48 @@ import random
 from src.utils.logger import log as log
 
 
+def get_pdf_page_count(pdf_path):
+    """
+    Get the number of pages in a PDF file.
+
+    Args:
+        pdf_path (str): Path to the PDF file.
+
+    Returns:
+        int: Number of pages in the PDF file.
+    """
+    try:
+        doc = fitz.open(pdf_path)
+        num_pages = doc.page_count
+        return num_pages
+    except Exception as e:
+        print(f"Error reading {pdf_path}: {e}")
+        return 0
+
+
+def extract_text_from_page(pdf_path, page_number):
+    """
+    Extract text from a specific page of a PDF document.
+
+    Args:
+        pdf_path (str): Path to the PDF document.
+        page_number (int): Page number to extract text from.
+
+    Returns:
+        str: Text extracted from the specified page.
+    """
+    try:
+        doc = fitz.open(pdf_path)
+        if page_number < 0 or page_number >= doc.page_count:
+            raise ValueError(f"Page number {page_number} is out of range for the document {pdf_path}.")
+        page = doc.load_page(page_number)
+        text = page.get_text()
+        return text
+    except Exception as e:
+        print(f"Error extracting text from page {page_number} of {pdf_path}: {e}")
+        return ""
+
+
 def extract_words_from_random_page(pdf_path):
     """
     Extract words from a random page of a PDF document.
@@ -24,8 +66,7 @@ def extract_words_from_random_page(pdf_path):
         str: Text extracted from the random page.
     """
     doc = fitz.open(pdf_path)
-    num_pages = doc.page_count
-    random_page_number = random.randint(0, num_pages - 1)
+    random_page_number = random.randint(0, get_pdf_page_count(pdf_path) - 1)
     log(f"extracting from pdf:{os.path.basename(pdf_path)} at page {random_page_number}")
     page = doc.load_page(random_page_number)
     text = page.get_text()
