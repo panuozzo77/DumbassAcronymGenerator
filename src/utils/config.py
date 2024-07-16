@@ -82,5 +82,6 @@ def load_database_credentials():
     username = config.get('database', 'username')
     ip = config.get('database', 'ip')
     password = config.get('database', 'password')
+    database = config.get('database', 'database')
 
-    return username, ip, password
+    return username, ip, password, database
