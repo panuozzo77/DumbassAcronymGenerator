@@ -8,12 +8,13 @@ License: MIT
 """
 
 import spacy
-from logger import log, verbose
+from src.utils.logger import log
 
 # python -m spacy download it_core_news_sm
 
 # Load the Italian model
 nlp = spacy.load("it_core_news_sm")
+
 
 class GrammarChecker:
     """
