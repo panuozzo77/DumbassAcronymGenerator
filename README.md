@@ -1,11 +1,21 @@
 # DumbassAcronymGenerator
 
 ## Description
-The "dumbassAcronym" program is a Python application designed to generate acronyms based on user input words. It utilizes PDF documents to extract random words that match the initials of the input word, allowing users to interactively choose the best words to obtain creative acronyms.
+DumbassAcronym is a Python application designed for generating creative acronyms based on user-input words. The application leverages PDF documents to extract random words matching the initials of the input word, enabling users to select suitable words interactively.
+
+In addition to its core functionality, the application includes a feature for analyzing the frequency of words found within loaded PDFs. Future plans for the project involve assigning scores to words, potentially highlighting those deemed more humorous or suitable for generating entertaining acronyms.
+
+The application is currently tailored for use with the Italian language.
 
 ## Project Focus
 The primary objective of this project is to develop a software solution that operates seamlessly across languages utilizing the Latin alphabet. By leveraging the common characteristics of Latin-based languages, the "dumbassAcronym" program aims to provide a universal tool for generating acronyms that transcends linguistic barriers.
 
+## Features
+- Acronym Generation: Generate acronyms using randomly extracted words from PDF documents given a word.
+- Word Frequency Analysis: Analyze and count the occurrence of words within PDF files.
+- Interactive Selection: Users can interactively choose words to form acronyms based on their chosen word.
+
+# work in progress, the informations down below are not yet updated 
 
 ## Project Structure
 - `pdfs/`: Directory containing PDF documents from which words are extracted.
@@ -37,6 +47,6 @@ The primary objective of this project is to develop a software solution that ope
 - Modify `config.ini` to change parameters like the number of words to search and the directory path for PDFs [follow this](https://i_dont_know.io).
 
 ## Notes
-- If no other paths have been inserted into config.ini ensure that PDF documents are placed in the `pdfs/` directory for word extraction. 
+- If no other paths have been inserted into config.ini ensure that PDF documents are placed in the `dumbassAcronym/pdfs/` directory for word extraction. 
 - The program may require adjustments to handle cases where no words are found for certain letters.
 
