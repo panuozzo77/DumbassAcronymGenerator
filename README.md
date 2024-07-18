@@ -21,15 +21,18 @@ The primary objective of this project is to develop a software solution that ope
 - `pdfs/`: Directory containing PDF documents from which words are extracted.
 - `README.md`: Markdown file containing information about the project.
 - `requirements.txt`: Text file listing the Python dependencies required by the project.
-- `src/`: Directory containing the source code of the program.
+- `src/`
+  - `analyzer/`: Directory containing analysis-related scripts.
+    - `Connector.py`: Python script for connecting to databases or other services.
+    - `wordCounter.py`: Python script for counting occurrences of words in text.
   - `executable/`: Directory containing executable Python scripts.
     - `AcronymMaker.py`: Python script for generating acronyms based on user input.
     - `WordGenerator.py`: Python script for extracting random words from PDF documents.
-  - `GrammarChecker.py`: Python script for checking grammar.
+    - `GrammarChecker.py`: Python script for checking grammar.
   - `utils/`: Directory containing utility scripts and configuration files.
-    - `config.ini`: Configuration file specifying parameters like the number of words to search, the directory path for PDFs and DB credentials
-     [follow this](https://i_dont_know.io) for details.
-    - `config.py`: Python script for loading configuration from `config.ini`.
+    - `coherent_words.py`: Python script for determining coherence between words.
+    - `config.ini`: Configuration file specifying parameters like the number of words to search, the directory path for PDFs, and database credentials.
+    - `config.py`: Python script for loading configuration from config.ini.
     - `extractor.py`: Python script for extracting words from PDF documents.
     - `logger.py`: Python script for logging messages.
 
