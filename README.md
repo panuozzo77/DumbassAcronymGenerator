@@ -1,3 +1,8 @@
+<!--
+Today-Date: 18/07/2024 DD/MM/YYYY
+Author: Cristian Porzio
+License: MIT
+-->
 # DumbassAcronymGenerator
 
 ## Description
@@ -11,15 +16,15 @@ The application is currently tailored for use with the Italian language.
 The primary objective of this project is to develop a software solution that operates seamlessly across languages utilizing the Latin alphabet. By leveraging the common characteristics of Latin-based languages, the "dumbassAcronym" program aims to provide a universal tool for generating acronyms that transcends linguistic barriers.
 
 ## Features
-- Acronym Generation: Generate acronyms using randomly extracted words from PDF documents given a word.
-- Word Frequency Analysis: Analyze and count the occurrence of words within PDF files.
-- Interactive Selection: Users can interactively choose words to form acronyms based on their chosen word.
+- **Acronym Generation**: Generate acronyms using randomly extracted words from PDF documents given a word.
+- **Word Frequency Analysis**: Analyze and count the occurrence of words within PDF files and save it on a MySQL DB.
+- **Interactive Selection**: Users can interactively choose words to form acronyms based on their chosen word.
 
 # work in progress, the informations down below are not yet updated 
 
 ## Project Structure
 - `pdfs/`: Directory containing PDF documents from which words are extracted.
-- `README.md`: Markdown file containing information about the project.
+- `README.md`: the Markdown file from where you're reading this.
 - `requirements.txt`: Text file listing the Python dependencies required by the project.
 - `src/`
   - `analyzer/`: Directory containing analysis-related scripts.
