@@ -53,9 +53,8 @@ The primary objective of this project is to develop a software solution that ope
 - watch also [requirements.txt](https://github.com/panuozzo77/DumbassAcronymGenerator/blob/main/requirements.txt)
 
 ## Configuration
-- Modify `config.ini` to change parameters like the number of words to search and the directory path for PDFs [follow this](https://i_dont_know.io).
+- Modify or generate `config.ini` as you wish [follow this guide](https://github.com/panuozzo77/DumbassAcronymGenerator/blob/main/src/utils/config_helper.md).
 
 ## Notes
-- If no other paths have been inserted into config.ini ensure that PDF documents are placed in the `dumbassAcronym/pdfs/` directory for word extraction. 
 - The program may require adjustments to handle cases where no words are found for certain letters.
 

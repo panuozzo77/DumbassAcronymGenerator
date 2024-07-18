@@ -14,7 +14,8 @@ config.ini **MUST** be in `utils/` folder.
 num_words_to_search = 15
 
 [paths]
-; Path to the directory containing PDFs. Leave blank to use the default 'pdfs/' directory.
+; If no other paths have been inserted into config.ini ensure that PDF documents are placed in the `dumbassAcronym/pdfs/` directory for usage. 
+; Path to the directory containing PDFs.
 ; Example: directory_path = /path/to/your/pdfs/
 directory_path =
 
