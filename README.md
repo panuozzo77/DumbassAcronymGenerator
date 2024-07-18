@@ -24,8 +24,6 @@ The primary objective of this project is to develop a software solution that ope
 
 ## Project Structure
 - `pdfs/`: Directory containing PDF documents from which words are extracted.
-- `README.md`: the Markdown file from where you're reading this.
-- `requirements.txt`: Text file listing the Python dependencies required by the project.
 - `src/`
   - `analyzer/`: Directory containing analysis-related scripts.
     - `Connector.py`: Python script for connecting to databases or other services.
@@ -40,6 +38,9 @@ The primary objective of this project is to develop a software solution that ope
     - `config.py`: Python script for loading configuration from config.ini.
     - `extractor.py`: Python script for extracting words from PDF documents.
     - `logger.py`: Python script for logging messages.
+    
+- `README.md`: the Markdown file from where you're reading this.
+- `requirements.txt`: Text file listing the Python dependencies required by the project.
 
 ## Usage
 1. Run `AcronymMaker.py` to initiate the program.
@@ -49,7 +50,7 @@ The primary objective of this project is to develop a software solution that ope
 
 ## Dependencies
 - PyMuPDF: A Python library for working with PDF files.
-- watch also [requirements.txt](https://i_dont_know.io)
+- watch also [requirements.txt](https://github.com/panuozzo77/DumbassAcronymGenerator/blob/main/requirements.txt)
 
 ## Configuration
 - Modify `config.ini` to change parameters like the number of words to search and the directory path for PDFs [follow this](https://i_dont_know.io).
